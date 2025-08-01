@@ -7,15 +7,15 @@ const App = () => {
   
   const [data, setData] = useState(true);
 
-  // useEvent("event_new", (payload) => {
-  //   setData(payload)
-  // })
+  useEvent("event_new", (payload) => {
+    setData(payload)
+  })
 
   return (
     <div>
       <Emitter/>
       <button onClick={()=> setData((_data) => !_data)}>Unmount</button>
-      {/* App - {JSON.stringify(data)} */}
+      App - {JSON.stringify(data)}
       {
         data ?
           <Listener/>
