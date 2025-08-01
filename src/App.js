@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import Listener from './Listener'
+import Emitter from './Emitter'
+import { useEvent } from './useEvent'
 
-function App() {
+const App = () => {
+  
+  const [data, setData] = useState(true);
+
+  // useEvent("event_new", (payload) => {
+  //   setData(payload)
+  // })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Emitter/>
+      <button onClick={()=> setData((_data) => !_data)}>Unmount</button>
+      {/* App - {JSON.stringify(data)} */}
+      {
+        data ?
+          <Listener/>
+        :
+          null
+      }
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
