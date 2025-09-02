@@ -5,7 +5,7 @@ export function useEvent(event, callback){
     useEffect(() => {
         eventEmitter.on(event, callback);
         return () => {
-            eventEmitter.off(event.callback)
+            eventEmitter.off(event, callback)
         };
     }, [event, callback])
 }
